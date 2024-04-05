@@ -6,7 +6,7 @@
 get_header();
 ?>
   <main>
-
+<!-- create a hero image -->
       <div>
       <section class="masthead" style="background-image: url('<?php echo wp_kses_post(get_field('masthead_image')); ?>')">
         <h1><?php echo wp_kses_post(get_field('main_heading')); ?></h1> 
@@ -15,7 +15,7 @@ get_header();
     </section>
     <h2 class="title"><?php echo wp_kses_post(get_field('row_one_and_two_title')); ?></h2>
     <div class="service">
-
+<!-- create pics sections -->
     <section class="home-row-one row">
 
       <div class="col-sm-6 col-md-6 col-lg-6">

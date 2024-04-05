@@ -1,5 +1,5 @@
 <?php
-// Adding the menu function to my custom theme (part of assignment one)
+// Add heading and footer menu
 function assignment_two_setup() {
   register_nav_menus( array(
     'header' => 'Header menu',
@@ -7,10 +7,10 @@ function assignment_two_setup() {
   ) );
 }
 add_action( 'after_setup_theme', 'assignment_two_setup' );
-// Add Featured image support to our posts (part of assignment one)
+
 add_theme_support( 'post-thumbnails' );
 
-// My custom post type
+// set up the custom post type
 function books_init(){
   $args = array(
     'label' => 'Books',
@@ -35,7 +35,7 @@ function books_init(){
   register_post_type('books', $args);
 }
 add_action('init', 'books_init');
-// now create a shortcode for my custom post-type
+// create a shortcode to display books
 function books_shortcode(){
   $query = new WP_Query(array('post_type' => 'books', 'post_per_page' => 8, 'order' => 'asc'));
   while ($query -> have_posts()) : $query-> the_post(); ?>
@@ -54,13 +54,13 @@ function books_shortcode(){
   endwhile;
   wp_reset_postdata();
 }
-// register shortcode
+// set the shortcode
 add_shortcode('books', 'books_shortcode');
-// changing my excerpt length
+
 add_filter( 'excerpt_length', function($length) {
   return 25;
 }, PHP_INT_MAX );
-// adding woocommerce support to our theme
+// set up the woomcommerce
 function assignmenttwo_add_woocommerce_support() {
   add_theme_support( 'woocommerce' );
 }
